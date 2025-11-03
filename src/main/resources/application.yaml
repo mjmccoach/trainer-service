@@ -1,3 +1,9 @@
 spring:
   application:
     name: trainer-service
+  datasource:
+    port: 3306
+    database: ProjectPokemonTrainers
+    username: root
+    password: root
+    ssl: false
