@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController("/trainer")
 public class TrainerResource {
-    private TrainerService trainerService;
+    private final TrainerService trainerService;
 
     public TrainerResource(TrainerService trainerService) {
         this.trainerService = trainerService;
@@ -21,7 +23,8 @@ public class TrainerResource {
     }
 
     @GetMapping("/all")
-    public void getAllTrainers() {
+    public List<Trainer> getAllTrainers() {
+        return trainerService.getAllTrainers();
     }
 
     @PutMapping("{id}")

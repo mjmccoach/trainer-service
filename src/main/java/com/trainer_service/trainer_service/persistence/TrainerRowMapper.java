@@ -11,7 +11,8 @@ import java.sql.SQLException;
 public class TrainerRowMapper implements RowMapper<Trainer> {
     @Override
     public Trainer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Trainer(rs.getInt("id"),
+        return new Trainer(
+                rs.getInt("id"),
                 rs.getString("name"));
     }
 }

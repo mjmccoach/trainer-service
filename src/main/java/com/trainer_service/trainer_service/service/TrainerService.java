@@ -5,6 +5,8 @@ import com.trainer_service.trainer_service.persistence.TrainerDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Slf4j
 public class TrainerService {
@@ -17,5 +19,9 @@ public class TrainerService {
 
     public Trainer getTrainerById(int id) {
         return trainerDao.getTrainer(id);
+    }
+
+    public List<Trainer> getAllTrainers() {
+        return trainerDao.getAllTrainers();
     }
 }
