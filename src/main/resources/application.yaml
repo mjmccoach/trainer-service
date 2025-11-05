@@ -3,6 +3,7 @@ spring:
     name: trainer-service
   datasource:
     port: 3306
+    url: jdbc:mysql://localhost:3306/ProjectPokemonTrainers
     database: ProjectPokemonTrainers
     username: root
     password: root
