@@ -14,6 +14,10 @@ public class TrainerDao {
     private static final String UPDATE = "UPDATE `Trainer` " +
             "                             SET name = '%s' " +
             "                             WHERE id = %s;";
+
+    private static final String DEACTIVATE = "UPDATE `Trainer` " +
+            "SET active = 0 " +
+            "WHERE id = %s ";
     private final JdbcTemplate jdbcTemplate;
     private final TrainerRowMapper trainerRowMapper;
 
@@ -32,5 +36,9 @@ public class TrainerDao {
 
     public void updateTrainer(String name, int id) {
         jdbcTemplate.execute(String.format(UPDATE, name, id));
+    }
+
+    public void deactivateTrainer(int id) {
+        jdbcTemplate.execute(String.format(DEACTIVATE, id));
     }
 }

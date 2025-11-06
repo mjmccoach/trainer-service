@@ -37,6 +37,7 @@ public class TrainerResource {
 
     @PutMapping("/delete/{id}")
     public void deactivateTrainer(@PathVariable("id") int id) {
+        trainerService.deactivateTrainer(id);
     }
 
 }
