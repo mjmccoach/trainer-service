@@ -30,4 +30,8 @@ public class TrainerService {
         trainerDao.updateTrainer(updateTrainerPayload.getName(), updateTrainerPayload.getId());
         return trainerDao.getTrainer(updateTrainerPayload.getId());
     }
+
+    public void deactivateTrainer(int id) {
+        trainerDao.deactivateTrainer(id);
+    }
 }
