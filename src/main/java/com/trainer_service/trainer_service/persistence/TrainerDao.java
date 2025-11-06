@@ -11,6 +11,9 @@ public class TrainerDao {
 
     private static final String SELECT = "SELECT * from `Trainer` WHERE id = ?;";
     private static final String SELECT_ALL = "SELECT * from `Trainer`;";
+    private static final String UPDATE = "UPDATE `Trainer` " +
+            "                             SET name = '%s' " +
+            "                             WHERE id = %s;";
     private final JdbcTemplate jdbcTemplate;
     private final TrainerRowMapper trainerRowMapper;
 
@@ -25,5 +28,9 @@ public class TrainerDao {
 
     public List<Trainer> getAllTrainers() {
         return jdbcTemplate.query(SELECT_ALL, trainerRowMapper);
+    }
+
+    public void updateTrainer(String name, int id) {
+        jdbcTemplate.execute(String.format(UPDATE, name, id));
     }
 }

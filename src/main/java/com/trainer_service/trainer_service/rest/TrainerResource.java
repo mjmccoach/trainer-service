@@ -1,11 +1,10 @@
 package com.trainer_service.trainer_service.rest;
 
+import com.trainer_service.trainer_service.error.ValidationException;
 import com.trainer_service.trainer_service.objects.Trainer;
+import com.trainer_service.trainer_service.objects.payload.UpdateTrainerPayload;
 import com.trainer_service.trainer_service.service.TrainerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +27,12 @@ public class TrainerResource {
     }
 
     @PutMapping("{id}")
-    public void updateTrainer(@PathVariable("id") int id) {
+    public Trainer updateTrainer(@PathVariable("id") int id, @RequestBody UpdateTrainerPayload updateTrainerPayload) {
+        //TODO find out why Lombok getter isn't being picked up
+        if (id != updateTrainerPayload.getId()) {
+            throw new ValidationException("Ids do not match");
+        }
+        return trainerService.updateTrainer(updateTrainerPayload);
     }
 
     @PutMapping("/delete/{id}")
