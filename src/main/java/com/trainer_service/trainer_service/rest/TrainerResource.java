@@ -28,7 +28,6 @@ public class TrainerResource {
 
     @PutMapping("{id}")
     public Trainer updateTrainer(@PathVariable("id") int id, @RequestBody UpdateTrainerPayload updateTrainerPayload) {
-        //TODO find out why Lombok getter isn't being picked up
         if (id != updateTrainerPayload.getId()) {
             throw new ValidationException("Ids do not match");
         }
