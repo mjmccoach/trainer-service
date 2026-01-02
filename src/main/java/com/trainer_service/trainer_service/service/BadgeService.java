@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BadgeService {
 
-    public GymBadge getById() {
+    public GymBadge getById(int id) {
         return new GymBadge(1, BadgeType.BOULDER);
     }
 
