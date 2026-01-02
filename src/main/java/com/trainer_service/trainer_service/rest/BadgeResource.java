@@ -25,8 +25,8 @@ public class BadgeResource {
     }
 
     @PostMapping
-    public void createGymBadge() {
-        badgeService.createGymBadge();
+    public void createGymBadge(@RequestParam("badgeName") String badgeName) {
+        badgeService.createGymBadge(badgeName);
     }
 
     @DeleteMapping("/{id}")
