@@ -12,7 +12,7 @@ import java.util.List;
 public class BadgeResource {
 
     @GetMapping("/{id}")
-    public GymBadge getBadgeById(int id) {
+    public GymBadge getBadgeById(@PathVariable("id") int id) {
         return new GymBadge(1, BadgeType.VOLCANO);
     }
 
@@ -26,7 +26,7 @@ public class BadgeResource {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteGymBadge(int id) {
+    public void deleteGymBadge(@PathVariable("id") int id) {
     }
 
     //TODO Add payload and update endpoint
