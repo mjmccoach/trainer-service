@@ -4,7 +4,6 @@ import com.trainer_service.trainer_service.objects.GymBadge;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class BadgeDAO {
         jdbcTemplate.execute(String.format(CREATE, name));
     }
 
-    public void deleteGymBadge(@PathVariable("id") int id) {
+    public void deleteGymBadge(int id) {
         jdbcTemplate.execute(String.format(DELETE, id));
     }
 }
