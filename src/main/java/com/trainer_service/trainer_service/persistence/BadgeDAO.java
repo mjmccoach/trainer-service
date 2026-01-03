@@ -20,7 +20,7 @@ public class BadgeDAO {
     private JdbcTemplate jdbcTemplate;
     private BadgeRowMapper badgeRowMapper;
 
-    public GymBadge getBadgeById(@PathVariable("id") int id) {
+    public GymBadge getBadgeById(int id) {
         return jdbcTemplate.queryForObject(SELECT_BY_ID, badgeRowMapper, id);
     }
 
