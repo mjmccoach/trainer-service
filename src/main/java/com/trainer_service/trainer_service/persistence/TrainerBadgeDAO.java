@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TrainerBadgeDAO {
     private static final String SELECT_ALL_BY_TRAINER = "SELECT * FROM trainer_badges WHERE id = ?";
+    private static final String CREATE_TRAINER_BADGE = "INSERT into trainer_badges VALUES(%s, %s)";
     private JdbcTemplate jdbcTemplate;
     private BadgeRowMapper badgeRowMapper;
 
@@ -18,5 +19,9 @@ public class TrainerBadgeDAO {
     //Add badge to trainer
     public List<GymBadge> getAllBadgesByTrainerId(int trainerId) {
         return jdbcTemplate.query(SELECT_ALL_BY_TRAINER, badgeRowMapper, trainerId);
+    }
+
+    public void createTrainerBadge(int trainerId, int badgeId) {
+        jdbcTemplate.execute(String.format(CREATE_TRAINER_BADGE, trainerId, badgeId));
     }
 }

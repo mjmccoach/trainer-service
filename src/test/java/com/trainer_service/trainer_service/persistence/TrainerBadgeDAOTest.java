@@ -26,7 +26,6 @@ class TrainerBadgeDAOTest {
     private static final String SELECT_ALL_BY_TRAINER = "SELECT * FROM trainer_badges WHERE id = ?";
     private static final int BADGE_ID_1 = 1;
     private static final int BADGE_ID_2 = 2;
-    private static final String BADGE_1_NAME = "Boulder Badge";
     private static final int TRAINER_1_ID = 20;
 
     @Mock
