@@ -24,6 +24,8 @@ import static org.mockito.Mockito.when;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class TrainerBadgeDAOTest {
     private static final String SELECT_ALL_BY_TRAINER = "SELECT * FROM trainer_badges WHERE id = ?";
+    private static final String CREATE_TRAINER_BADGE = "INSERT into trainer_badges VALUES(%s, %s)";
+
     private static final int BADGE_ID_1 = 1;
     private static final int BADGE_ID_2 = 2;
     private static final int TRAINER_1_ID = 20;
@@ -60,5 +62,11 @@ class TrainerBadgeDAOTest {
 
         assertEquals(2, actual.get(1).getId());
         assertEquals(BadgeType.CASCADE, actual.get(1).getBadgeType());
+    }
+
+    @Test
+    void create_badge() {
+        trainerBadgeDAO.createTrainerBadge(TRAINER_1_ID, BADGE_ID_1);
+        verify(mockJdbcTemplate).execute(String.format(CREATE_TRAINER_BADGE, TRAINER_1_ID, BADGE_ID_1));
     }
 }
