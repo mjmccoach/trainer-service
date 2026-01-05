@@ -15,8 +15,6 @@ public class TrainerBadgeDAO {
     private JdbcTemplate jdbcTemplate;
     private BadgeRowMapper badgeRowMapper;
 
-    //Get all badges by trainer id
-    //Add badge to trainer
     public List<GymBadge> getAllBadgesByTrainerId(int trainerId) {
         return jdbcTemplate.query(SELECT_ALL_BY_TRAINER, badgeRowMapper, trainerId);
     }
