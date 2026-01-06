@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,6 +32,7 @@ public class TrainerResourceTest {
     private static final int ID_2 = 251;
     private static final String NAME_2 = "Lorelei";
 
+
     private TrainerResource trainerResource;
     private Trainer trainer1;
     private Trainer trainer2;
@@ -41,8 +43,8 @@ public class TrainerResourceTest {
     @BeforeEach
     void setUp() {
         trainerResource = new TrainerResource(mockTrainerService);
-        trainer1 = new Trainer(ID, NAME);
-        trainer2 = new Trainer(ID_2, NAME_2);
+        trainer1 = new Trainer(ID, NAME, Collections.emptyList());
+        trainer2 = new Trainer(ID_2, NAME_2, Collections.emptyList());
 
     }
 
