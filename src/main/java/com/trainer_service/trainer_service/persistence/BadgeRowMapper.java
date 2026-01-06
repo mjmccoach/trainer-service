@@ -12,7 +12,8 @@ import java.sql.SQLException;
 public class BadgeRowMapper implements RowMapper<GymBadge> {
     @Override
     public GymBadge mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new GymBadge(rs.getInt("id"),
+        return new GymBadge(
+                rs.getInt("id"),
                 BadgeType.valueOf(rs.getString("badge_name").toUpperCase()));
     }
 }
