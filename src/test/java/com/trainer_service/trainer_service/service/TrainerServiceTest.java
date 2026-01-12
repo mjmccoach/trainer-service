@@ -2,10 +2,12 @@ package com.trainer_service.trainer_service.service;
 
 import com.trainer_service.trainer_service.enums.BadgeType;
 import com.trainer_service.trainer_service.objects.GymBadge;
+import com.trainer_service.trainer_service.objects.Item;
 import com.trainer_service.trainer_service.objects.Trainer;
 import com.trainer_service.trainer_service.objects.payload.UpdateTrainerPayload;
 import com.trainer_service.trainer_service.persistence.TrainerBadgeDAO;
 import com.trainer_service.trainer_service.persistence.TrainerDao;
+import com.trainer_service.trainer_service.persistence.TrainerItemDAO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -34,18 +36,24 @@ public class TrainerServiceTest {
     private static final String NAME_2 = "Lorelei";
     private static final int BADGE_ID_1 = 1;
     private static final int BADGE_ID_2 = 2;
-
+    private static final int ITEM_ID_1 = 12;
+    private static final String ITEM_1_NAME = "Pokeball";
+    private static final int ITEM_1_COUNT = 5;
+    private static final int ITEM_ID_2 = 24;
+    private static final String ITEM_2_NAME = "Repel";
+    private static final int ITEM_2_COUNT = 10;
+    @Mock
+    TrainerDao mockTrainerDao;
+    @Mock
+    TrainerBadgeDAO mockTrainerBadgeDao;
+    @Mock
+    TrainerItemDAO mockTrainerItemDAO;
     private Trainer trainer1;
     private Trainer trainer2;
-
     private GymBadge badge1;
     private GymBadge badge2;
-
-    @Mock
-    private TrainerDao mockTrainerDao;
-    @Mock
-    private TrainerBadgeDAO mockTrainerBadgeDao;
-
+    private Item item1;
+    private Item item2;
     @InjectMocks
     private TrainerService trainerService;
 
@@ -54,8 +62,10 @@ public class TrainerServiceTest {
     void setUp() {
         badge1 = new GymBadge(BADGE_ID_1, BadgeType.BOULDER);
         badge2 = new GymBadge(BADGE_ID_2, BadgeType.CASCADE);
-        trainer1 = new Trainer(ID, NAME, Collections.emptyList());
-        trainer2 = new Trainer(ID_2, NAME_2, Collections.emptyList());
+        item1 = new Item(ITEM_ID_1, ITEM_1_NAME, ITEM_1_COUNT);
+        item2 = new Item(ITEM_ID_2, ITEM_2_NAME, ITEM_2_COUNT);
+        trainer1 = new Trainer(ID, NAME, Collections.emptyList(), Collections.emptyList());
+        trainer2 = new Trainer(ID_2, NAME_2, Collections.emptyList(), Collections.emptyList());
 
     }
 
@@ -63,10 +73,19 @@ public class TrainerServiceTest {
     void get_trainer_by_id() {
         when(mockTrainerDao.getTrainer(anyInt())).thenReturn(trainer1);
         when(mockTrainerBadgeDao.getAllBadgesByTrainerId(anyInt())).thenReturn(Arrays.asList(badge1, badge2));
+        when(mockTrainerItemDAO.getAllItemsByTrainer(anyInt())).thenReturn(Arrays.asList(item1, item2));
         Trainer actual = trainerService.getTrainerById(ID);
 
         assertEquals(ID, actual.getId());
         assertEquals(NAME, actual.getName());
+
+        assertEquals(BADGE_ID_1, actual.getBadges().getFirst().getId());
+        assertEquals(BadgeType.BOULDER, actual.getBadges().getFirst().getBadgeType());
+
+        assertEquals(ITEM_ID_1, actual.getItems().getFirst().getId());
+        assertEquals(ITEM_1_NAME, actual.getItems().getFirst().getName());
+        assertEquals(ITEM_1_COUNT, actual.getItems().getFirst().getCount());
+
 
     }
 

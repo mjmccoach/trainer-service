@@ -43,8 +43,8 @@ public class TrainerResourceTest {
     @BeforeEach
     void setUp() {
         trainerResource = new TrainerResource(mockTrainerService);
-        trainer1 = new Trainer(ID, NAME, Collections.emptyList());
-        trainer2 = new Trainer(ID_2, NAME_2, Collections.emptyList());
+        trainer1 = new Trainer(ID, NAME, Collections.emptyList(), Collections.emptyList());
+        trainer2 = new Trainer(ID_2, NAME_2, Collections.emptyList(), Collections.emptyList());
 
     }
 

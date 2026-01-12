@@ -53,11 +53,11 @@ class ItemServiceTest {
 
         assertEquals(ID_1, actual.getFirst().getId());
         assertEquals(ITEM_NAME_1, actual.getFirst().getName());
-        assertEquals(CHARGES_1, actual.getFirst().getBaseCharges());
+        assertEquals(CHARGES_1, actual.getFirst().getCount());
 
         assertEquals(ID_2, actual.get(1).getId());
         assertEquals(ITEM_NAME_2, actual.get(1).getName());
-        assertEquals(CHARGES_2, actual.get(1).getBaseCharges());
+        assertEquals(CHARGES_2, actual.get(1).getCount());
     }
 
     @Test
@@ -67,7 +67,7 @@ class ItemServiceTest {
 
         assertEquals(ID_1, actual.getId());
         assertEquals(ITEM_NAME_1, actual.getName());
-        assertEquals(CHARGES_1, actual.getBaseCharges());
+        assertEquals(CHARGES_1, actual.getCount());
     }
 
     @Test
