@@ -57,7 +57,7 @@ class TrainerItemDAOTest {
     void select_all_items_for_trainer() {
         when(mockJdbcTemplate.query(SELECT_ALL, itemRowMapper, TRAINER_ID_1)).thenReturn(Arrays.asList(item1, item2));
 
-        List<Item> actual = trainerItemDAO.getAllItemsByTrainer(eq(TRAINER_ID_1));
+        List<Item> actual = trainerItemDAO.getAllItemsByTrainer(TRAINER_ID_1);
 
         assertEquals(2, actual.size());
 
