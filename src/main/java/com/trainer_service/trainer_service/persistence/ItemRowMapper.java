@@ -14,6 +14,6 @@ public class ItemRowMapper implements RowMapper<Item> {
         return new Item(
                 rs.getInt("id"),
                 rs.getString("name"),
-                rs.getInt("base_charges"));
+                rs.getInt("count"));
     }
 }
