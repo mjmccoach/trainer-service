@@ -12,5 +12,5 @@ import lombok.ToString;
 public class Item {
     private int id;
     private String name;
-    private int baseCharges;
+    private int count;
 }

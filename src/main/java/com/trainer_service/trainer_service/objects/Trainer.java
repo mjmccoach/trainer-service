@@ -16,4 +16,5 @@ public class Trainer {
     private int id;
     private String name;
     private List<GymBadge> badges;
+    private List<Item> items;
 }

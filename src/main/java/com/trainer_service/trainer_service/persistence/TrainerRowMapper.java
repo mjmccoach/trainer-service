@@ -15,8 +15,10 @@ public class TrainerRowMapper implements RowMapper<Trainer> {
         return new Trainer(
                 rs.getInt("id"),
                 rs.getString("name"),
-                Collections.emptyList()
+                Collections.emptyList(),
                 //Badges will be populated from a different query to normalise data
+                Collections.emptyList()
+                //Items will be populated from a different query to normalise data
         );
     }
 }
